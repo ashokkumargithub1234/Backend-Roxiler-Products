@@ -78,6 +78,10 @@ const fetchAndInsert = async () => {
   return "Transactions added";
 };
 
+app.get("/", async (request, response) => {
+  response.send("Data Loaded");
+});
+
 app.get("/initialize-database", async (request, response) => {
   const initializedDatabase = await fetchAndInsert();
   response.send(initializedDatabase);
@@ -472,7 +476,6 @@ app.get("/combined-data", async (request, response) => {
     statistics: await getStatistics(selectedMonth),
     barChartData: await getBarChartData(selectedMonth),
     pieChartData: await getPieChartData(selectedMonth),
-    deleteInformation: await deleteProductData(deleteId),
   };
   response.send(combinedData);
 });
